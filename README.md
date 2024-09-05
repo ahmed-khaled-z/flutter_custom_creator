@@ -29,10 +29,10 @@ lib/
 │       ├── logger.dart
 │       ├── snack_bar_utils.dart
 │       └── validator.dart
-└── features/
-    ├── app.dart
-    ├── injection_container.dart
-    └── main.dart
+├── features/
+├── app.dart
+├── injection_container.dart
+└── main.dart
 ```
 
 ## Features
@@ -45,28 +45,14 @@ lib/
 
 ### Installation
 
-To use this package in your Flutter project:
-
-1. Add the package to your `pubspec.yaml`:
-
-   ```yaml
-   dependencies:
-     flutter_custom_app:
-       git:
-         url: https://github.com/flutter-try-catch/flutter_custom_creator
-         ref: main
-   ```
-
-2. Run `flutter pub get` to install the package.
-
-### Usage
-
-To create a new Flutter project using this custom app structure:
-
 1. Install the `flutter_custom_creator` tool (if not already installed):
    ```
    dart pub global activate flutter_custom_creator
    ```
+
+### Usage
+
+To create a new Flutter project using this custom app structure:
 
 2. Use the tool to create a new project:
    ```
