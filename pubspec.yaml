@@ -1,9 +1,10 @@
 name: flutter_custom_creator
 description: A custom Flutter project creator.
 version: 1.0.1
+homepage: https://github.com/flutter-try-catch/flutter_custom_creator
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.12.0 <4.0.0'
 
 dependencies:
   yaml: ^3.1.0

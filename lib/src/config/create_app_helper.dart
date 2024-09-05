@@ -2,8 +2,22 @@ import 'dart:async';
 import 'dart:io';
 
 // Create theme file
-Future<void> createAppHelper() async {
+  /// Creates the `app_helper` directory and its contents, such as
+  /// `app_constants.dart`, `app_formats.dart`, `app_extension.dart`,
+  /// `app_functions.dart`, `app_gaps.dart`, and `app_padding.dart`.
+  ///
+  /// The `app_name` parameter is required and is used in the
+  /// `app_constants.dart` file.
+  ///
+  /// The function is asynchronous and returns a `Future<void>`.
+  ///
+  /// The function is idempotent; it can be safely called multiple times.
+  ///
+  /// The function does not throw any errors; it prints a success message to the
+  /// console when it is completed.
+Future<void> createAppHelper({required String appName}) async {
   Directory('lib/config/app_helper').createSync(recursive: true);
+  await createAppConstants(appName: appName);
   await createAppFormats();
   await createAppExtension();
   await createAppFunctions();
@@ -12,8 +26,31 @@ Future<void> createAppHelper() async {
   print('your app_helper created successfully! 🎉');
 }
 
+  /// Creates the `app_constants.dart` file with a single class `AppConstants`
+  /// containing a single static string field `appName` set to the value of
+  /// `appName` parameter.
+createAppConstants({required String appName}) {
+  File('lib/config/app_helper/app_constants.dart').writeAsStringSync('''
+
+class AppConstants {
+  static const String appName = "$appName";
+} 
+''');
+}
 
 
+
+  /// Creates the `app_formats.dart` file with a class `AppFormats` containing
+  /// four static `DateFormat` fields: `dateFormat`, `timeFormat`,
+  /// `serverTime`, and `dateTimeFormat`. These are used to format dates and
+  /// times in the app.
+  ///
+  /// The function is asynchronous and returns a `Future<void>`.
+  ///
+  /// The function is idempotent; it can be safely called multiple times.
+  ///
+  /// The function does not throw any errors; it prints a success message to the
+  /// console when it is completed.
 createAppFormats() {
   File('lib/config/app_helper/app_formats.dart').writeAsStringSync('''
 import 'package:intl/intl.dart';
@@ -29,6 +66,18 @@ class AppFormats {
 ''');
 }
 
+  /// Creates the `app_extension.dart` file with various extensions on
+  /// [ChangeNotifier], [Exception], [String], [BuildContext], [DateTime], and
+  /// [TimeOfDay].
+  ///
+  /// The generated file contains some useful extensions for the above classes.
+  ///
+  /// The function is asynchronous and returns a `Future<void>`.
+  ///
+  /// The function is idempotent; it can be safely called multiple times.
+  ///
+  /// The function does not throw any errors; it prints a success message to the
+  /// console when it is completed.
 createAppExtension() {
   File('lib/config/app_helper/app_extension.dart').writeAsStringSync('''
 import 'dart:convert';
@@ -107,6 +156,18 @@ extension TimeOfDayExtension on TimeOfDay {
 ''');
 }
 
+/// Creates the `app_functions.dart` file with a single class `AppFunctions`
+/// containing a single static method `extractNumber` that extracts the first
+/// number found in the given [input] string.
+///
+/// The `extractNumber` method returns an empty string if no number is found.
+///
+/// The function is asynchronous and returns a `Future<void>`.
+///
+/// The function is idempotent; it can be safely called multiple times.
+///
+/// The function does not throw any errors; it prints a success message to the
+/// console when it is completed.
 createAppFunctions() {
 
   File('lib/config/app_helper/app_functions.dart').writeAsStringSync('''
@@ -128,6 +189,23 @@ class AppFunctions {
 ''');
 }
 
+/// Creates the `app_gaps.dart` file with a single class `AppGaps`
+/// containing the following static const fields:
+///
+/// * `extraSmallGap` with value `Gap(2)`
+/// * `soSmallGap` with value `Gap(5)`
+/// * `smallGap` with value `Gap(10)`
+/// * `defaultGap` with value `Gap(20)`
+/// * `bigGap` with value `Gap(40)`
+/// * `soBigGap` with value `Gap(80)`
+/// * `extraBigGap` with value `Gap(120)`
+///
+/// The function is asynchronous and returns a `Future<void>`.
+///
+/// The function is idempotent; it can be safely called multiple times.
+///
+/// The function does not throw any errors; it prints a success message to the
+/// console when it is completed.
 createAppGaps() {
   File('lib/config/app_helper/app_gaps.dart').writeAsStringSync('''
 import 'package:gap/gap.dart';
@@ -144,6 +222,24 @@ class AppGaps{
 ''');
 }
 
+/// Creates the `app_padding.dart` file with a single class `AppPadding`
+/// containing the following static const fields:
+///
+/// * `extraSmallPadding` with value `3.0`
+/// * `soSmallPadding` with value `5.0`
+/// * `smallPadding` with value `10.0`
+/// * `tinySmallPadding` with value `12.0`
+/// * `defaultPadding` with value `20.0`
+/// * `bigPadding` with value `40.0`
+/// * `soBigPadding` with value `80.0`
+/// * `extraBigPadding` with value `120.0`
+///
+/// The function is asynchronous and returns a `Future<void>`.
+///
+/// The function is idempotent; it can be safely called multiple times.
+///
+/// The function does not throw any errors; it prints a success message to the
+/// console when it is completed.
 createAppPadding() {
   File('lib/config/app_helper/app_padding.dart').writeAsStringSync('''
 class AppPadding {

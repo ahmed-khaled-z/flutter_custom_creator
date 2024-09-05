@@ -1,6 +1,14 @@
 import 'dart:io';
 
 
+/// Creates the `main.dart` file which is the entry point of the app
+/// 
+/// The generated file imports [MaterialApp], [App], [ThemeManager] and
+/// [ServiceLocator].
+///
+/// The generated file also prints a message to the console when it is created.
+///
+/// The file is written to the `lib` directory of the current working directory.
 createMainFile() {
   File('lib/main.dart').writeAsStringSync('''
 // lib/main.dart
